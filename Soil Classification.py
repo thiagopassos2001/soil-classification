@@ -14,6 +14,12 @@ def TRB(P10,P40,P200,LL,IP):
 
     * Adotar valores percentuais, não decimais (12 ao invés de 0.12 por exemplo)
     '''
+    
+    # Filtrar possíveis NP e NL
+    if type(LL)==str or type(IP)==str:
+        LL = 0
+        IP = 0
+    
     # Cálculo do índice de grupo (IG)
     a = P200 - 35 if 35<=P200<=75 else (0 if P200<35 else 40)
     b = P200 - 15 if 15<=P200<=55 else (0 if P200<15 else 40)
@@ -27,7 +33,7 @@ def TRB(P10,P40,P200,LL,IP):
         if P10<=50:
             if P40<=30 and P200<=15 and IP<=6 and IG==0:
                 class_TRB = class_TRB + 'A-1-a'
-            if P40<=50 and P200<=25 and IP<=6 and IG==0:
+            if P40<=50 and P200<=25 and IP<=6 and IG==0 and 'A-1-a' not in class_TRB:
                 class_TRB = class_TRB + 'A-1-b'
             if P40>50 and P200<=25 and IP==-1 and IG==0:
                 class_TRB = class_TRB + 'A-3'

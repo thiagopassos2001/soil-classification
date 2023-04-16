@@ -30,37 +30,30 @@ def TRB(P10,P40,P200,LL,IP):
     # Classificação
     class_TRB = ''
     if P200<=35:
-        if P10<=50:
-            if P40<=30 and P200<=15 and IP<=6 and IG==0:
-                class_TRB = class_TRB + 'A-1-a'
-            if P40<=50 and P200<=25 and IP<=6 and IG==0 and 'A-1-a' not in class_TRB:
-                class_TRB = class_TRB + 'A-1-b'
-            if P40>50 and P200<=25 and IP==-1 and IG==0:
-                class_TRB = class_TRB + 'A-3'
-        if P10>50:
-            if IP<=10:
-                if LL<=40 and IG==0:
-                    class_TRB = class_TRB + 'A-2-4'
-                if LL>40 and IG==0:
-                   class_TRB = class_TRB + 'A-2-5'
-            if IP>10:
-                if LL<=40 and IG<=4:
-                    class_TRB = class_TRB + 'A-2-6'
-                if LL>40 and IG<=4:
-                    class_TRB = class_TRB + 'A-2-7'
+        if P10<=50 and P40<=30 and P200<=15 and IP<=6 and IG==0:
+            class_TRB = class_TRB + 'A-1-a'
+        elif P40<=50 and P200<=25 and IP<=6 and IG==0:
+            class_TRB = class_TRB + 'A-1-b'
+        elif P40>50 and P200<=25 and IP==-1 and IG==0:
+            class_TRB = class_TRB + 'A-3'
+        elif IP<=10 and LL<=40 and IG==0:
+            class_TRB = class_TRB + 'A-2-4'
+        elif IP<=10 and LL>40 and IG==0:
+            class_TRB = class_TRB + 'A-2-5'
+        elif IP>10 and LL<=40 and IG<=4:
+            class_TRB = class_TRB + 'A-2-6'
+        elif IP>10  and LL>40 and IG<=4:
+            class_TRB = class_TRB + 'A-2-7'
     else:
-        if IP<=10:
-            if LL<=40 and IG<=8:
-                class_TRB = class_TRB + 'A-4'
-            if LL>40 and IG<=12:
-                class_TRB = class_TRB + 'A-5'
-        if IP>10:
-            if LL<=40 and IG<=16:
-                class_TRB = class_TRB + 'A-6'
-            if LL>40 and IG<=20:
-                if IP<=LL-30:
-                    class_TRB = class_TRB + 'A-7-5'
-                if IP>LL-30:
-                    class_TRB = class_TRB + 'A-7-6'
+        if IP<=10 and LL<=40 and IG<=8:
+            class_TRB = class_TRB + 'A-4'
+        elif IP<=10 and LL>40 and IG<=12:
+            class_TRB = class_TRB + 'A-5'
+        elif IP>10 and LL<=40 and IG<=16:
+            class_TRB = class_TRB + 'A-6'
+        elif IP>10 and LL>40 and IG<=20 and IP<=LL-30:
+            class_TRB = class_TRB + 'A-7-5'
+        elif IP>10 and LL>40 and IG<=20 and IP>LL-30:
+            class_TRB = class_TRB + 'A-7-6'
 
     return class_TRB
